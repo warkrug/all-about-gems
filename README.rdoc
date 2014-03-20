@@ -38,3 +38,13 @@ like this:
       s.summary     = 'Minimum gem'
       s.authors     = 'Rob Nichols'
     end
+
+The build process should build a gem file.
+
+=== The gem file
+
+The gem file is essential just a zip file containing:
+
+[checksums.yaml.gz] Checksums to allow the integrity of the data to be checked
+[data.tar.gz]       The files being distrubted
+[metadata.gz]       Information about the gem
