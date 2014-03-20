@@ -191,6 +191,25 @@ on 'rake'
 You can also define dependencies that are only required in the development 
 and test environments by using add_development_dependency.
 
+If you have a look at metadata stored in the release_gem.gem, you'll see
+this includes the information about the dependency gem:
+
+    dependencies:
+    - !ruby/object:Gem::Dependency
+      name: rake
+      requirement: !ruby/object:Gem::Requirement
+        requirements:
+        - - ! '>='
+          - !ruby/object:Gem::Version
+            version: '0'
+      type: :runtime
+      prerelease: false
+      version_requirements: !ruby/object:Gem::Requirement
+        requirements:
+        - - ! '>='
+          - !ruby/object:Gem::Version
+            version: '0'
+
 ==== release_gem.gemspec
 
 The resulting gemspec looks like this:
