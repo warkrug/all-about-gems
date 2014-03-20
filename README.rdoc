@@ -87,7 +87,7 @@ the gem file's data.tar.gz
 We can install the gem if we run the following command in the folder where the
 gem is stored:
 
-    gem install small_gem
+    gem install small_gem-0.0.1.gem
 
 To check that the code is working, we should be able to open an irb console and:
 
@@ -184,7 +184,7 @@ and a home page where more information about the gem can be found.
 
 ==== Dependencies
 
-If you code depends on other gems being available within the environment, this
+If your code depends on other gems being available within the environment, this
 can be specified using add_dependency. release_gem.gemspect adds a dependency 
 on 'rake'
 
