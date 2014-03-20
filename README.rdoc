@@ -1,0 +1,40 @@
+= All about gems
+
+A tutorial exercise investigating gems. What they are and how to build them.
+
+Gems are a standard format for distributing Ruby programs and libraries.
+
+== The contents of a gem
+
+One way to get to the essence of what something is, is to look at an example
+of that thing in it simplest form. 
+
+=== Minimum gem
+
+A gem is built from a set of instructions defined in a gemspec. To build
+a minimum gem, create a file with the .gemspec extension with content
+
+    Gem::Specification.new
+
+Then at the command line run the command:
+
+    gem build <gemspec filename>
+
+You should get an error telling you that you are missing a name attribute.
+To fix this modify the file to this:
+
+    Gem::Specification.new do |s|
+      s.name        = 'the_name_of_your_gem'
+    end
+
+Then run gem build again. You'll get another error telling you that another
+attribute is missing. Add that attribute to your gemspec and repeat the
+process until you are able to build a gem. You should end up with something
+like this:
+
+    Gem::Specification.new do |s|
+      s.name        = 'minimum_gem'
+      s.version     = '0.0.1'
+      s.summary     = 'Minimum gem'
+      s.authors     = 'Rob Nichols'
+    end
