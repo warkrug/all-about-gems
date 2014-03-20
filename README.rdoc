@@ -4,7 +4,7 @@ A tutorial exercise investigating gems. What they are and how to build them.
 
 == The contents of a gem
 
-One way to get to the essence of what something is, is to look at an example
+One way to get to the essence of something, is to look at an example
 of that thing in it simplest form. 
 
 === Minimum gem
@@ -64,7 +64,7 @@ Small gem will be used to distribute a single module: AllAboutGems.
       
     end
 
-Thee small_gem.gemspec needs an additional attribute: files. This defines
+The small_gem.gemspec needs an additional attribute: files. This defines
 the location of the code files stored in the gem.
 
     Gem::Specification.new do |s|
@@ -115,7 +115,7 @@ You can push a gem to RubyGems with the command:
     gem push <gem_name>
 
 You need to set up a RubyGems account and configure your system to use the
-credential associated with that account. You also need to use a gem name
+credentials associated with that account. You also need to use a gem name
 that will be unique to RubyGems.
 
 === ReleaseGem
@@ -127,7 +127,7 @@ that are commonly used in gems.
 
 One issue with releasing code to be used in environments you have no control
 over, is that it is easy to generate object name classes. For example, if
-you have a User class, that will class with any host app's User class.
+you have a User class, that will clash with any host app's User class.
 
 Use name spacing to limit the incidents of object name clashes.
 
