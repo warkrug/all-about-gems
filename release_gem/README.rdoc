@@ -1,0 +1,8 @@
+= Release Gem
+
+A demonstration gem that holds a single module
+
+== Usage
+
+    require 'release_gem'
+    puts AllAboutGems.message

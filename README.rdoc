@@ -49,8 +49,8 @@ The gem file is essential just a zip file containing:
 
 == Distributing code
 
-The minimum gem lacks one vital compontent. Code to destibute. So lets create
-some code and a gem to detribute it in.
+The minimum gem lacks one vital compontent. Code to distribute. So lets create
+some code and a gem to distribute it in.
 
 === Small gem
 
@@ -64,8 +64,8 @@ Small gem will be used to distribute a single module: AllAboutGems.
       
     end
 
-To this this small_file.gemspec needs an additional attribute: files. This defines
-the location that need to be stored in the gem.
+Thee small_gem.gemspec needs an additional attribute: files. This defines
+the location of the code files stored in the gem.
 
     Gem::Specification.new do |s|
       s.name        = 'small_gem'
@@ -107,3 +107,112 @@ If you use rvm the files will store here:
     <home>/.rvm/gems/<ruby version>/gems/small_gem-0.0.1/
 
 All this contains is the lib folder with all_about_gems.rb
+
+== Releasing a gem
+
+You can push a gem to RubyGems with the command:
+
+    gem push <gem_name>
+
+You need to set up a RubyGems account and configure your system to use the
+credential associated with that account. You also need to use a gem name
+that will be unique to RubyGems.
+
+=== ReleaseGem
+
+release_gem is an example gem that contains some additional attrbutes
+that are commonly used in gems.
+
+==== Name Spacing
+
+One issue with releasing code to be used in environments you have no control
+over, is that it is easy to generate object name classes. For example, if
+you have a User class, that will class with any host app's User class.
+
+Use name spacing to limit the incidents of object name clashes.
+
+To use the version of AllAboutGems released in release_gem we need to add
+the name space:
+
+    require 'release_gem'
+    puts ReleaseGem::AllAboutGems.message
+
+==== A version file
+
+You may want to use the version number outside of the gemspec, so it is
+good practice to define it within the gem code and then reference that
+from within the gemspec. These two lines are making that file available to
+the gemspec:
+
+    $:.push File.expand_path("../lib", __FILE__)
+    require "release_gem/version"
+
+Which then allows the version attribute to be set like this:
+
+    s.version     = ReleaseGem::VERSION
+
+==== License
+
+You should add a licence to your gemspec and distribute it with the code files
+
+==== Rakefile
+
+Most projects need additional functionality to support the main code; tests
+for example.
+
+The Rakefile used in the project adds a facility to run test and build 
+documentation files.
+
+==== Tests
+
+Tests are added in a test folder, which is specied in the gemspec like this:
+
+    s.test_files  = Dir["test/**/*"]
+
+==== Files
+
+You probably don't want to specify the path of every file in your lib folder,
+so instead you can specify Dir["lib/**/*"]. The release_gem gemspec also add
+adds the Rakefile, README.rdoc and license file:
+
+    s.files = Dir["lib/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+
+==== Other information
+
+It is polite to also add a contact email address, a description of the gem,
+and a home page where more information about the gem can be found.
+
+==== Dependencies
+
+If you code depends on other gems being available within the environment, this
+can be specified using add_dependency. release_gem.gemspect adds a dependency 
+on 'rake'
+
+You can also define dependencies that are only required in the development 
+and test environments by using add_development_dependency.
+
+==== release_gem.gemspec
+
+The resulting gemspec looks like this:
+
+    $:.push File.expand_path("../lib", __FILE__)
+    require "release_gem/version"
+
+    Gem::Specification.new do |s|
+      s.name        = 'release_gem'
+      s.version     = ReleaseGem::VERSION
+      s.summary     = 'A small gem that provides an example of typical gem content'
+      s.description = 'Destributes a module AllAboutGems with tests and documentation'
+      s.authors     = 'Rob Nichols'
+      s.email       = 'rob@undervale.co.uk'
+      s.homepage    = 'https://github.com/warkrug/all-about-gems'
+      s.license     = 'MIT-LICENSE'
+      s.files       = Dir["lib/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+      s.test_files  = Dir["test/**/*"]
+
+      s.add_dependency 'rake'
+    end
+= Further reading
+
+* http://guides.rubygems.org/specification-reference
+* http://guides.rubygems.org/make-your-own-gem/
