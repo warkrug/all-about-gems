@@ -77,7 +77,7 @@ the location of the code files stored in the gem.
 
 Notice the file is put into a folder called 'lib'. You can put the file in the same
 location as the gemspec and the gem will build, but the code in the file will not be 
-easily accessble. The system expects the code to be put into a lib folder.
+easily accessible. The system expects the code to be put into a lib folder.
 
 If we now build small_gem, the lib folder and its contents will be stored within 
 the gem file's data.tar.gz
@@ -160,7 +160,7 @@ You should add a licence to your gemspec and distribute it with the code files
 Most projects need additional functionality to support the main code; tests
 for example.
 
-The Rakefile used in the project adds a facility to run test and build 
+The Rakefile used in release_gem adds a facility to run test and build 
 documentation files.
 
 ==== Tests
@@ -185,7 +185,7 @@ and a home page where more information about the gem can be found.
 ==== Dependencies
 
 If your code depends on other gems being available within the environment, this
-can be specified using add_dependency. release_gem.gemspect adds a dependency 
+can be specified using add_dependency. release_gem.gemspec adds a dependency 
 on 'rake'
 
 You can also define dependencies that are only required in the development 
