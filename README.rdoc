@@ -18,7 +18,7 @@ Then at the command line run the command:
 
     gem build <gemspec filename>
 
-You should get an error telling you that you are missing a name attribute.
+You should get an error stating that you are missing a name attribute.
 To fix this modify the file to this:
 
     Gem::Specification.new do |s|
@@ -49,7 +49,7 @@ The gem file is essential just a zip file containing:
 
 == Distributing code
 
-The minimum gem lacks one vital compontent. Code to distribute. So lets create
+The minimum gem lacks one vital compontent: code to distribute. So let's create
 some code and a gem to distribute it in.
 
 === Small gem
@@ -106,7 +106,7 @@ If you use rvm the files will store here:
 
     <home>/.rvm/gems/<ruby version>/gems/small_gem-0.0.1/
 
-All this contains is the lib folder with all_about_gems.rb
+This location contains just the lib folder with all_about_gems.rb
 
 == Releasing a gem
 
@@ -126,7 +126,7 @@ that are commonly used in gems.
 ==== Name Spacing
 
 One issue with releasing code to be used in environments you have no control
-over, is that it is easy to generate object name classes. For example, if
+over, is that it is easy to generate object name clashes. For example, if
 you have a User class, that will clash with any host app's User class.
 
 Use name spacing to limit the incidents of object name clashes.
@@ -165,14 +165,14 @@ documentation files.
 
 ==== Tests
 
-Tests are added in a test folder, which is specied in the gemspec like this:
+Tests are added in a test folder, which is specified in the gemspec like this:
 
     s.test_files  = Dir["test/**/*"]
 
 ==== Files
 
 You probably don't want to specify the path of every file in your lib folder,
-so instead you can specify Dir["lib/**/*"]. The release_gem gemspec also add
+so instead you can specify Dir["lib/**/*"]. The release_gem gemspec also
 adds the Rakefile, README.rdoc and license file:
 
     s.files = Dir["lib/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
